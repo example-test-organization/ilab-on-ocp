@@ -457,8 +457,8 @@ requires-dist = [
     { name = "click", specifier = ">=8.1.7" },
     { name = "httpx", specifier = "==0.28.1" },
     { name = "jinja2", specifier = ">=3.1.4" },
-    { name = "kfp", url = "https://github.com/kubeflow/pipelines/archive/26946059963051cce5a8a70270ebc6bc9f7e2bd6.tar.gz", subdirectory = "sdk/python" },
-    { name = "kfp-kubernetes", specifier = ">=1.4.0" },
+    { name = "kfp", url = "https://github.com/kubeflow/pipelines/archive/64e8264352b6e3981e0e64e2156864468cf156cc.tar.gz", subdirectory = "sdk/python" },
+    { name = "kfp-kubernetes", url = "https://github.com/kubeflow/pipelines/archive/64e8264352b6e3981e0e64e2156864468cf156cc.tar.gz", subdirectory = "kubernetes_platform/python" },
     { name = "kubeflow-training", specifier = "==1.8.1" },
     { name = "kubernetes", specifier = "==30.1.0" },
     { name = "model-registry", specifier = "==0.2.14" },
@@ -481,8 +481,8 @@ wheels = [
 
 [[package]]
 name = "kfp"
-version = "2.12.1"
-source = { url = "https://github.com/kubeflow/pipelines/archive/26946059963051cce5a8a70270ebc6bc9f7e2bd6.tar.gz", subdirectory = "sdk/python" }
+version = "2.12.2"
+source = { url = "https://github.com/kubeflow/pipelines/archive/64e8264352b6e3981e0e64e2156864468cf156cc.tar.gz", subdirectory = "sdk/python" }
 dependencies = [
     { name = "click" },
     { name = "docstring-parser" },
@@ -498,7 +498,7 @@ dependencies = [
     { name = "tabulate" },
     { name = "urllib3" },
 ]
-sdist = { hash = "sha256:6ee411a519cb9d2efca4a486e5a1ee01ab4c621ef888b554e422d83a82d7e4bb" }
+sdist = { hash = "sha256:4dd54b411ac4b56313be4de4b7bd3470963a69e336153671336a9cb1f3f4a9b4" }
 
 [package.metadata]
 requires-dist = [
@@ -507,7 +507,7 @@ requires-dist = [
     { name = "docstring-parser", specifier = ">=0.7.3,<1" },
     { name = "google-api-core", specifier = ">=1.31.5,!=2.0.*,!=2.1.*,!=2.2.*,!=2.3.0,<3.0.0.dev0" },
     { name = "google-auth", specifier = ">=1.6.1,<3" },
-    { name = "google-cloud-storage", specifier = ">=2.2.1,<3" },
+    { name = "google-cloud-storage", specifier = ">=2.2.1,<4" },
     { name = "kfp-kubernetes", marker = "extra == 'all'", specifier = "<2" },
     { name = "kfp-kubernetes", marker = "extra == 'kubernetes'", specifier = "<2" },
     { name = "kfp-pipeline-spec", specifier = "==0.6.0" },
@@ -518,19 +518,34 @@ requires-dist = [
     { name = "requests-toolbelt", specifier = ">=0.8.0,<2" },
     { name = "tabulate", specifier = ">=0.8.6,<1" },
     { name = "typing-extensions", marker = "python_full_version < '3.9'", specifier = ">=3.7.4,<5" },
-    { name = "urllib3", specifier = "<2.0.0" },
+    { name = "urllib3", specifier = "<3.0.0" },
 ]
 provides-extras = ["all", "kubernetes"]
 
 [[package]]
 name = "kfp-kubernetes"
 version = "1.4.0"
-source = { registry = "https://pypi.org/simple" }
+source = { url = "https://github.com/kubeflow/pipelines/archive/64e8264352b6e3981e0e64e2156864468cf156cc.tar.gz", subdirectory = "kubernetes_platform/python" }
 dependencies = [
     { name = "kfp" },
     { name = "protobuf" },
 ]
-sdist = { url = "https://files.pythonhosted.org/packages/78/92/5df7b43e06329132d15e43eaae75518b7e9b785cfa72c5cde1f902be88a3/kfp-kubernetes-1.4.0.tar.gz", hash = "sha256:bbb2ce9230be2cbf8b344897a518cc8debe008e153277675b16fd4634e81f358", size = 43663 }
+sdist = { hash = "sha256:4dd54b411ac4b56313be4de4b7bd3470963a69e336153671336a9cb1f3f4a9b4" }
+
+[package.metadata]
+requires-dist = [
+    { name = "docformatter", marker = "extra == 'dev'", specifier = "==1.4" },
+    { name = "isort", marker = "extra == 'dev'", specifier = "==5.10.1" },
+    { name = "kfp", specifier = ">=2.6.0,<3" },
+    { name = "mypy", marker = "extra == 'dev'", specifier = "==0.941" },
+    { name = "pre-commit", marker = "extra == 'dev'", specifier = "==2.19.0" },
+    { name = "protobuf", specifier = ">=4.21.1,<5" },
+    { name = "pycln", marker = "extra == 'dev'", specifier = "==2.1.1" },
+    { name = "pytest", marker = "extra == 'dev'", specifier = "==7.1.2" },
+    { name = "pytest-xdist", marker = "extra == 'dev'", specifier = "==2.5.0" },
+    { name = "yapf", marker = "extra == 'dev'", specifier = "==0.32.0" },
+]
+provides-extras = ["dev"]
 
 [[package]]
 name = "kfp-pipeline-spec"
